@@ -1,0 +1,416 @@
+        /* 全域重設與背景設定 */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            font-family: 'PingFang TC', 'Microsoft JhengHei', sans-serif;
+            background-color: #0f0f11;
+            color: #e5e5e5;
+            min-height: 100vh;
+            padding-bottom: 60px;
+            /* 原本的 body 設定... */
+    
+            /* 防選取 CSS */
+            -webkit-user-select: none; /* Safari */
+            -moz-user-select: none;    /* Firefox */
+            -ms-user-select: none;     /* IE10+ */
+            user-select: none;         /* 標準語法 */
+        }   
+        /* 1. 頂部 Header & Logo 區塊 */
+        header {
+            text-align: center;
+            padding: 50px 20px 20px;
+            background: linear-gradient(180deg, rgba(30,30,35,0.8) 0%, rgba(15,15,17,0) 100%);
+        }
+        .logo {
+            position: fixed;
+            top: 40px;
+            left: 40px;
+            max-width: 120px;
+            height: auto;
+            Z-index: 1000;
+            margin-bottom: 15px;
+            border-radius: 50%;
+        }
+        .brand-title {
+            font-family: 'Modern Antiqua', 'times new roman', 'Noto Serif TC', serif;
+            font-size: 3rem;
+            letter-spacing: 4px;
+            color: #d4af37;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+        .brand-subtitle {
+            font-family: 'times new roman', 'Noto Serif TC', serif;
+            font-size: 1.25rem;
+            color: #888;
+            letter-spacing: 2px;
+        }
+
+        /* 2. 分類頁籤列 (Tabs) */
+        .tabs-container {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            flex-wrap: wrap;
+            margin: 30px auto 20px;
+            padding: 0 20px;
+            max-width: 800px;
+        }
+        .tab-btn {
+            background: #18181c;
+            color: #aaa;
+            border: 1px solid #2a2a30;
+            padding: 10px 22px;
+            border-radius: 30px;
+            cursor: pointer;
+            font-family: 'times new roman', 'Noto Serif TC', serif;
+            font-size: 0.95rem;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+        }
+        .tab-btn:hover {
+            color: #fff;
+            border-color: #d4af37;
+        }
+        /* 被選中時的高亮狀態 */
+        .tab-btn.active {
+            background: #d4af37;
+            color: #0f0f11;
+            font-weight: bold;
+            border-color: #d4af37;
+            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
+        }
+
+        /* 3. 酒款序列展示區 (Grid 排版) */
+        .container {
+            max-width: 1200px;
+            margin: 20px auto 0;
+            padding: 0 20px;
+        }
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 25px;
+            /* 🔥 關鍵秘訣：限制整個網格區塊的最大寬度，並讓它置中！ */
+            max-width: 1250px; /* 剛好可以完美容納 4 個卡片 + 間距 (280px * 4 + 30px * 3) */
+            margin: 0 auto;    /* 讓整個 grid 永遠置中對齊 */
+        }
+
+        /* 4. 單一酒款卡片 */
+        .card {
+            background: #18181c;
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid #2a2a30;
+            transition: transform 0.3s ease, box-shadow 0.3s ease, opacity 0.3s ease;
+        }
+        .card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 25px rgba(212, 175, 55, 0.15);
+            border-color: #d4af37;
+        }
+        
+        /* 隱藏不符合篩選條件的卡片 */
+        .card.hide {
+            opacity: 0;
+            transform: scale(0.8);
+            pointer-events: none; /* 讓隱藏的卡片無法被點擊 */
+            position: absolute;   /* 讓它脫離網格排版，才不會佔位子變黑格子！ */
+            visibility: hidden;
+        }
+
+        .card-img-wrap {
+            width: 100%;
+            height: 320px;
+            background-color: #18181c;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+        .card-img-wrap img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            transition: transform 0.5s ease;
+        }
+        .card:hover .card-img-wrap img {
+            transform: scale(1.05);
+        }
+
+        .card-content {
+            padding: 20px;
+        }
+        .card-tag {
+            font-family: 'Modern Antiqua', 'times new roman', 'Noto Serif TC', serif;
+            font-size: 0.75rem;
+            color: #d4af37;
+            text-transform: uppercase;
+            letter-spacing: 1.2px;
+            margin-bottom: 6px;
+        }
+        .card-title {
+            font-family: 'Modern Antiqua', 'times new roman', 'Noto Serif TC', serif;
+            font-size: 1.3rem;
+            color: #fff;
+            margin-bottom: 10px;
+            letter-spacing: 0.5px;
+            font-weight: 500;
+        }
+        .card-desc {
+            font-family: 'times new roman', 'Noto Serif TC', serif;
+            font-size: 1rem;
+            color: #aaa;
+            letter-spacing: 1px;
+            line-height: 1.6;
+        }      
+        /* ================= 1. 年齡驗證 Pop-up 樣式 ================= */
+        .age-modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background-color: rgba(10, 10, 10, 0.95); /* 極深沉的半透明背景 */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999; /* 確保蓋在最上層，誰都別想偷看 */
+            transition: opacity 0.4s ease;
+        }
+        .age-modal-box {
+        background-color: #18181c;
+        border: 1px solid #333;
+        border-radius: 12px;
+        padding: 40px;
+        max-width: 450px;
+        width: 90%;
+        text-align: center;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+        font-family: 'Noto Serif TC', serif;
+        }
+
+        .age-modal-box h2 {
+            font-family: 'Modern Antiqua', 'times new roman', 'Noto Serif TC', serif;
+            color: #d4af37; /* 經典香檳金 */
+            font-size: 1.5rem;
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+        }
+
+        .age-warning-title {
+            font-family: 'Modern Antiqua', 'times new roman', 'Noto Serif TC', serif;
+            color: #fff;
+            font-size: 1.1rem;
+            margin-bottom: 15px;
+        }
+
+        .age-desc {
+            font-family: 'Modern Antiqua', 'times new roman', 'Noto Serif TC', serif;
+            color: #aaa;
+            font-size: 0.9rem;
+            line-height: 1.6;
+            margin-bottom: 30px;
+        }
+
+        .age-btn-group {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+        }
+
+        .age-btn {
+            padding: 12px 24px;
+            border-radius: 6px;
+            font-size: 0.95rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: none;
+        }
+
+        .age-btn.accept {
+            background-color: #d4af37;
+            color: #111;
+            font-weight: bold;
+        }
+
+        .age-btn.accept:hover {
+            background-color: #e5c158;
+            transform: translateY(-2px);
+        }
+
+        .age-btn.decline {
+            background-color: transparent;
+            color: #888;
+            border: 1px solid #444;
+        }
+
+        .age-btn.decline:hover {
+            background-color: #222;
+            color: #fff;
+        }
+        /* ================= 2. 右側懸浮詢價按鈕樣式 ================= */
+        .float-inquiry-btn {
+        position: fixed;
+        right: 30px;
+        bottom: 80px;
+        background-color: #d4af37; /* 金色系呼應品牌 */
+        color: #121212;
+        padding: 12px 20px;
+        border-radius: 50px;
+        /* 🔥 關鍵：讓裡面所有東西（圖示 + 文字）強制左右排列並垂直置中 */
+        display: flex;
+        align-items: center;
+        gap: 8px; /* 圖示跟文字之間的間距 */
+    
+        text-decoration: none;
+        font-weight: bold;
+        box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
+        z-index: 999;
+        transition: all 0.3s ease;
+        font-family: 'Noto Serif TC', serif;
+        }
+
+        .float-inquiry-btn:hover {
+            transform: translateY(-4px);
+            background-color: #e5c158;
+            box-shadow: 0 6px 20px rgba(212, 175, 55, 0.5);
+        }
+
+        .inquiry-icon {
+            width: 20px;   /* 限制圖示寬度與字高相符 */
+            height: 20px;  /* 限制圖示高度 */
+            object-fit: contain; /* 確保圖片不變形 */
+            display: block;
+        }
+
+        .inquiry-text {
+            letter-spacing: 1px;
+        }
+        .fixed-footer-warning {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        background-color: rgba(18, 18, 20, 0.85); /* 極深色半透明底色 */
+        color: #d4af37; /* 香檳金字體，呼應品牌調性 */
+        text-align: center;
+        padding: 10px 0;
+        font-size: 2.5rem;
+        font-weight: bold;
+        letter-spacing: 30px;
+        border-top: 1px solid #2a2a30;
+        z-index: 888; /* 確保在一般內容之上，但不會蓋過右下角的 LINE 懸浮按鈕 (z-index: 999) */
+        font-family: 'Noto Serif TC', serif;
+        }
+        /* ================= 大圖 Lightbox 樣式 ================= */
+        .lightbox-overlay {
+            display: none; /* 預設隱藏 */
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background-color: rgba(0, 0, 0, 0.9);
+            z-index: 100000; /* 最高層級，蓋過所有內容 */
+            justify-content: center;
+            align-items: center;
+            backdrop-filter: blur(5px);
+        }
+
+        .lightbox-content {
+            max-width: 90vw;
+            max-height: 85vh;
+            object-fit: contain;
+            border-radius: 8px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
+            transition: transform 0.3s ease;
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            color: #d4af37;
+            font-size: 40px;
+            font-weight: bold;
+            cursor: pointer;
+            user-select: none;
+            z-index: 100001;
+        }
+
+        .lightbox-close:hover {
+            color: #fff;
+        }
+
+        /* 讓產品卡片內的圖片游標變成放大鏡 */
+        .product-card img, .grid-item img {
+            cursor: zoom-in;
+        }
+        /* ================= 手機版響應式優化 (iPhone RWD) ================= */
+         @media screen and (max-width: 768px) {
+            /* 1. 讓整體容器左右有呼吸空間，不貼齊螢幕邊緣 */
+            .logo {
+                position: fixed;
+                top: 12px;
+                left: 12px;
+                max-width: 50px;
+                height: auto;
+                Z-index: 1000;
+            }
+            .brand-title {
+                font-size: 1.8rem;
+                letter-spacing: 1px;
+                font-weight: 700;
+            }
+            .brand-subtitle {
+                font-size: 1rem;
+                letter-spacing: 1px;
+            }   
+            .container {
+                padding: 0 15px;
+            }
+
+            /* 2. 將酒款網格從電腦的 4 欄改為手機的 1 欄或 2 欄 */
+            .product-grid {
+                grid-template-columns: repeat(1, 1fr) !important; /* 想要每行 1 張圖改為 1，若想每行 2 張可改為 2 */
+                gap: 20px !important;/* 手機上的卡片間距稍微縮小 */
+                padding: 0 15px !important;
+            }
+
+            /* 3. 調整底部固定警語在手機上的字體大小，避免換行太醜 */
+            .fixed-footer-warning {
+                font-size: 1.2rem !important; /* 縮小字體 */
+                padding: 6px 10px !important;
+                letter-spacing: 1px !important; /* 縮小字間距 */
+                line-height: 1.3 !important;
+                white-space: nowrap; /* 盡可能保持單行不任意斷行 */
+                overflow: hidden;
+                text-overflow: ellipsis;
+            }
+
+            /* 4. 調整右下角懸浮按鈕在手機上的位置，避免檔到太多內容 */
+            .float-inquiry-btn {
+                right: 15px !important;
+                bottom: 80px !important;
+                padding: 8px 14px !important;
+                font-size: 0.8rem !important;
+             }
+            /* 🔥 2. 大圖 Lightbox 在 iPhone / 手機上的尺寸限制（關鍵！） */
+            .lightbox-content {
+                max-width: 90vw !important;  /* 寬度最多只佔手機螢幕的 90% */
+                max-height: 75vh !important; /* 高度最多只佔手機螢幕的 75%，留出上下呼吸空間 */
+                object-fit: contain !important; /* 確保酒瓶圖片按比例縮放、絕不變形 */
+            }
+
+            /* 🔥 3. 手機版右上角關閉按鈕（×）的位置與大小微調 */
+            .lightbox-close {
+                top: 15px !important;
+                right: 20px !important;
+                font-size: 36px !important;
+            }
+        }
+       
