@@ -5,7 +5,7 @@
             padding: 0;
         }
         body {
-            font-family: 'PingFang TC', 'Microsoft JhengHei', sans-serif;
+            font-family: 'times new roman', 'Noto Serif TC', serif;
             background-color: #0f0f11;
             color: #e5e5e5;
             min-height: 100vh;
@@ -37,7 +37,7 @@
         .brand-title {
             font-family: 'Modern Antiqua', 'times new roman', 'Noto Serif TC', serif;
             font-size: 3rem;
-            letter-spacing: 4px;
+            letter-spacing: 5px;
             color: #d4af37;
             font-weight: 700;
             margin-bottom: 8px;
@@ -93,7 +93,7 @@
         .product-grid {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
-            gap: 25px;
+            gap: 30px;
             /* 🔥 關鍵秘訣：限制整個網格區塊的最大寬度，並讓它置中！ */
             max-width: 1250px; /* 剛好可以完美容納 4 個卡片 + 間距 (280px * 4 + 30px * 3) */
             margin: 0 auto;    /* 讓整個 grid 永遠置中對齊 */
@@ -130,15 +130,17 @@
             align-items: center;
             justify-content: center;
             overflow: hidden;
+            padding: 8px 6px ;
         }
         .card-img-wrap img {
             width: 100%;
             height: 100%;
-            object-fit: contain;
+            border-radius: 12px;
+            object-fit: cover;
             transition: transform 0.5s ease;
         }
         .card:hover .card-img-wrap img {
-            transform: scale(1.05);
+            transform: scale(1.08);
         }
 
         .card-content {
@@ -157,7 +159,7 @@
             font-size: 1.3rem;
             color: #fff;
             margin-bottom: 10px;
-            letter-spacing: 0.5px;
+            letter-spacing: 0.8px;
             font-weight: 500;
         }
         .card-desc {
@@ -301,7 +303,7 @@
         padding: 10px 0;
         font-size: 2.5rem;
         font-weight: bold;
-        letter-spacing: 30px;
+        letter-spacing: 40px;
         border-top: 1px solid #2a2a30;
         z-index: 888; /* 確保在一般內容之上，但不會蓋過右下角的 LINE 懸浮按鈕 (z-index: 999) */
         font-family: 'Noto Serif TC', serif;
@@ -347,7 +349,7 @@
         }
 
         /* 讓產品卡片內的圖片游標變成放大鏡 */
-        .product-card img, .grid-item img {
+        .card-img-wrap img, .card {
             cursor: zoom-in;
         }
         /* ================= 手機版響應式優化 (iPhone RWD) ================= */
