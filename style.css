@@ -11,12 +11,6 @@
             min-height: 100vh;
             padding-bottom: 60px;
             /* 原本的 body 設定... */
-    
-            /* 防選取 CSS */
-            -webkit-user-select: none; /* Safari */
-            -moz-user-select: none;    /* Firefox */
-            -ms-user-select: none;     /* IE10+ */
-            user-select: none;         /* 標準語法 */
         }   
         /* 1. 頂部 Header & Logo 區塊 */
         header {
@@ -155,7 +149,7 @@
             margin-bottom: 6px;
         }
         .card-title {
-            font-family: 'Modern Antiqua', 'times new roman', 'Noto Serif TC', serif;
+            font-family: 'times new roman', 'Noto Serif TC', serif;
             font-size: 1.3rem;
             color: #fff;
             margin-bottom: 10px;
