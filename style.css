@@ -429,10 +429,10 @@
         margin: 0;
         font-size: 14px;
         line-height: 1.9;
-        color: #d4cfc5;
+        color: #a8a296;
         }
         .footer-details a {
-        color: #d4cfc5;          /* 跟其他文字一樣的暖灰米色，想改金色可用 #d4af37 */
+        color: #a8a296;          /* 跟其他文字一樣的暖灰米色，想改金色可用 #d4af37 */
         text-decoration: none;   /* 拿掉預設底線；想保留底線就刪掉這行 */
         }
 
