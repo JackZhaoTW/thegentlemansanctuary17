@@ -423,6 +423,13 @@
         margin: 0;
         }
 
+        .footer-info p {
+        font-size: 14px;
+        line-height: 1.8;
+        color: #a8a296;
+        margin: 0;
+        }
+
         .footer-details {
         list-style: none;
         padding: 0;
