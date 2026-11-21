@@ -11,6 +11,12 @@
             min-height: 100vh;
             padding-bottom: 60px;
             /* 原本的 body 設定... */
+    
+            /* 防選取 CSS */
+            -webkit-user-select: none; /* Safari */
+            -moz-user-select: none;    /* Firefox */
+            -ms-user-select: none;     /* IE10+ */
+            user-select: none;         /* 標準語法 */
         }   
         /* 1. 頂部 Header & Logo 區塊 */
         header {
@@ -18,14 +24,32 @@
             padding: 50px 20px 20px;
             background: linear-gradient(180deg, rgba(30,30,35,0.8) 0%, rgba(15,15,17,0) 100%);
         }
+        /* 頂部 LINE 優惠公告列 */
+            .top-promo-bar {
+            display: block;
+            width: 100%;
+            background-color: #6b6251; /* 參考圖的暖灰金色，想改亮金色可用 #b8963e */
+            color: #ffffff;
+            text-align: center;
+            text-decoration: none;
+            font-size: 14px;
+            letter-spacing: 1px;
+            padding: 10px 15px;
+            box-sizing: border-box;
+            transition: background-color 0.2s ease;
+            position: relative;
+            z-index: 1000;
+        }
+
+        .top-promo-bar:hover {
+            background-color: #827763; /* 滑鼠移過去時稍微變亮 */
+        }
         .logo {
-            position: fixed;
-            top: 40px;
-            left: 40px;
+            position: Block;
+            margin: 15px auto 15px auto;
             max-width: 120px;
             height: auto;
             Z-index: 1000;
-            margin-bottom: 15px;
             border-radius: 50%;
         }
         .brand-title {
@@ -149,7 +173,7 @@
             margin-bottom: 6px;
         }
         .card-title {
-            font-family: 'times new roman', 'Noto Serif TC', serif;
+            font-family: 'Modern Antiqua', 'times new roman', 'Noto Serif TC', serif;
             font-size: 1.3rem;
             color: #fff;
             margin-bottom: 10px;
@@ -346,6 +370,119 @@
         .card-img-wrap img, .card {
             cursor: zoom-in;
         }
+        
+        
+        /* 網頁底部 Footer */
+        .site-footer {
+        background-color: #1c1b18;
+        color: #d4cfc5;
+        padding: 50px 20px 75px 20px;
+        margin-top: 60px;
+        border-top: 1px solid #3a362e;
+        width: 100%;
+        box-sizing: border-box;
+        }
+
+        .footer-container {
+        max-width: 1100px;
+        margin: 0 auto;
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        flex-wrap: wrap;
+        gap: 40px;
+        }
+
+        /* 三個欄位的基礎設定 */
+        .footer-col {
+        flex: 1;
+        min-width: 240px; /* 螢幕變窄時自動換行，不會擠成一團 */
+        }
+
+        /* 讓 About Us 稍微寬一點，文字比較好閱讀 */
+        .footer-about {
+        flex: 1.4;
+        }
+
+        /* 右側社群欄位在電腦版靠右對齊 */
+        .footer-social-wrap {
+        flex: 0.7;
+        }
+
+        .footer-title {
+        color: #d4af37;
+        font-size: 16px;
+        margin: 0 0 15px 0;
+        letter-spacing: 1px;
+        }
+
+        .footer-about p {
+        font-size: 14px;
+        line-height: 1.8;
+        color: #a8a296;
+        margin: 0;
+        }
+
+        .footer-details {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        font-size: 14px;
+        line-height: 1.9;
+        color: #d4cfc5;
+        }
+        .footer-details a {
+        color: #d4cfc5;          /* 跟其他文字一樣的暖灰米色，想改金色可用 #d4af37 */
+        text-decoration: none;   /* 拿掉預設底線；想保留底線就刪掉這行 */
+        }
+
+        .footer-details a:hover {
+        color: #d4af37;          /* 滑鼠移過去變金色 */
+        text-decoration: underline;
+        }
+
+        /* 社群圓形圖示按鈕 */
+        .footer-social {
+        display: flex;
+        gap: 12px;
+        align-items: center;
+        }
+
+        .social-circle {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 42px;
+        height: 42px;
+        border-radius: 50%;
+        background-color: #4a453b;
+        color: #ffffff;
+        text-decoration: none;
+        font-size: 12px;
+        font-weight: bold;
+        letter-spacing: 0.5px;
+        transition: background-color 0.2s ease, transform 0.2s ease;
+        }
+
+        .social-circle:hover {
+        background-color: #d4af37;
+        color: #141413;
+        transform: translateY(-2px);
+        }
+
+        /* 底部版權列 */
+        .footer-bottom {
+        max-width: 1100px;
+        margin: 40px auto 0 auto;
+        padding-top: 20px;
+        border-top: 1px solid #2e2b24;
+        text-align: right;
+        font-size: 12px;
+        color: #827c70;
+        }
+
+        
+
         /* ================= 手機版響應式優化 (iPhone RWD) ================= */
          @media screen and (max-width: 768px) {
             /* 1. 讓整體容器左右有呼吸空間，不貼齊螢幕邊緣 */
@@ -408,5 +545,17 @@
                 right: 20px !important;
                 font-size: 36px !important;
             }
-        }
-       
+            .footer-container {
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            gap: 30px;
+            }
+            .footer-social {
+                justify-content: center;
+            }
+            .footer-bottom {
+                text-align: center;
+            
+            }
+       }
