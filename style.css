@@ -6,7 +6,7 @@
         }
         body {
             font-family: 'times new roman', 'Noto Serif TC', serif;
-            background-color: #0f0f11;
+            background-color: #142639;
             color: #e5e5e5;
             min-height: 100vh;
             padding-bottom: 60px;
@@ -22,14 +22,14 @@
         header {
             text-align: center;
             padding: 50px 20px 20px;
-            background: linear-gradient(180deg, rgba(30,30,35,0.8) 0%, rgba(15,15,17,0) 100%);
+            background: linear-gradient(180deg, rgba(30,30,35,0.8) 50%, rgba(15,15,17,0) 100%);
         }
         /* 頂部 LINE 優惠公告列 */
             .top-promo-bar {
             display: block;
             width: 100%;
-            background-color: #6b6251; /* 參考圖的暖灰金色，想改亮金色可用 #b8963e */
-            color: #ffffff;
+            background-color: #4a5f74;
+            color: #d4af37;
             text-align: center;
             text-decoration: none;
             font-size: 14px;
@@ -42,28 +42,28 @@
         }
 
         .top-promo-bar:hover {
-            background-color: #827763; /* 滑鼠移過去時稍微變亮 */
+            background-color: #5d7791; /* 滑鼠移過去時稍微變亮 */
         }
         .logo {
             position: Block;
             margin: 15px auto 15px auto;
             max-width: 120px;
             height: auto;
-            Z-index: 1000;
+            z-index: 1000;
             border-radius: 50%;
         }
         .brand-title {
             font-family: 'Modern Antiqua', 'times new roman', 'Noto Serif TC', serif;
             font-size: 3rem;
             letter-spacing: 5px;
-            color: #d4af37;
+            color: #dbdbdb;
             font-weight: 700;
             margin-bottom: 8px;
         }
         .brand-subtitle {
             font-family: 'times new roman', 'Noto Serif TC', serif;
             font-size: 1.25rem;
-            color: #888;
+            color: #a3abb4;
             letter-spacing: 2px;
         }
 
@@ -78,9 +78,9 @@
             max-width: 800px;
         }
         .tab-btn {
-            background: #18181c;
-            color: #aaa;
-            border: 1px solid #2a2a30;
+            background: #4a5f74;
+            color: #efe9d7;
+            border: 1px solid #a3abb4;
             padding: 10px 22px;
             border-radius: 30px;
             cursor: pointer;
@@ -91,15 +91,15 @@
         }
         .tab-btn:hover {
             color: #fff;
-            border-color: #d4af37;
+            border-color: #dbdbdb;
         }
         /* 被選中時的高亮狀態 */
         .tab-btn.active {
-            background: #d4af37;
-            color: #0f0f11;
+            background: #a3abb4;
+            color: #142639;
             font-weight: bold;
-            border-color: #d4af37;
-            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
+            border-color: #a3abb4;
+            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.15);
         }
 
         /* 3. 酒款序列展示區 (Grid 排版) */
@@ -119,7 +119,7 @@
 
         /* 4. 單一酒款卡片 */
         .card {
-            background: #18181c;
+            background: #4a5f74;
             border-radius: 12px;
             overflow: hidden;
             border: 1px solid #2a2a30;
@@ -127,8 +127,8 @@
         }
         .card:hover {
             transform: translateY(-8px);
-            box-shadow: 0 12px 25px rgba(212, 175, 55, 0.15);
-            border-color: #d4af37;
+            box-shadow: 0 12px 25px rgba(212, 175, 55, 0.1);
+            border-color: #dbdbdb;
         }
         
         /* 隱藏不符合篩選條件的卡片 */
@@ -143,7 +143,7 @@
         .card-img-wrap {
             width: 100%;
             height: 320px;
-            background-color: #18181c;
+            background-color: #4a5f74;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -175,7 +175,7 @@
         .card-title {
             font-family: 'Modern Antiqua', 'times new roman', 'Noto Serif TC', serif;
             font-size: 1.3rem;
-            color: #fff;
+            color: #efe9d7;
             margin-bottom: 10px;
             letter-spacing: 0.8px;
             font-weight: 500;
@@ -183,7 +183,7 @@
         .card-desc {
             font-family: 'times new roman', 'Noto Serif TC', serif;
             font-size: 1rem;
-            color: #aaa;
+            color: #dbdbdb;
             letter-spacing: 1px;
             line-height: 1.6;
         }      
@@ -202,7 +202,7 @@
             transition: opacity 0.4s ease;
         }
         .age-modal-box {
-        background-color: #18181c;
+        background-color: #142639;
         border: 1px solid #333;
         border-radius: 12px;
         padding: 40px;
@@ -277,8 +277,8 @@
         position: fixed;
         right: 30px;
         bottom: 80px;
-        background-color: #d4af37; /* 金色系呼應品牌 */
-        color: #121212;
+        background-color: #a3abb4; /* 金色系呼應品牌 */
+        color: #142639; /* 深色文字 */
         padding: 12px 20px;
         border-radius: 50px;
         /* 🔥 關鍵：讓裡面所有東西（圖示 + 文字）強制左右排列並垂直置中 */
@@ -288,7 +288,7 @@
     
         text-decoration: none;
         font-weight: bold;
-        box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
+        box-shadow: 0 4px 15px rgba(212, 175, 55, 0.1);
         z-index: 999;
         transition: all 0.3s ease;
         font-family: 'Noto Serif TC', serif;
@@ -316,7 +316,7 @@
         left: 0;
         width: 100%;
         background-color: rgba(18, 18, 20, 0.85); /* 極深色半透明底色 */
-        color: #d4af37; /* 香檳金字體，呼應品牌調性 */
+        color: #efe9d7;
         text-align: center;
         padding: 10px 0;
         font-size: 2.5rem;
@@ -334,7 +334,7 @@
             left: 0;
             width: 100vw;
             height: 100vh;
-            background-color: rgba(0, 0, 0, 0.9);
+            background-color: rgba(30, 30, 35, 0.8);
             z-index: 100000; /* 最高層級，蓋過所有內容 */
             justify-content: center;
             align-items: center;
@@ -374,8 +374,8 @@
         
         /* 網頁底部 Footer */
         .site-footer {
-        background-color: #1c1b18;
-        color: #d4cfc5;
+        background-color: #4a5f74;
+        color: #a3abb4;
         padding: 50px 20px 75px 20px;
         margin-top: 60px;
         border-top: 1px solid #3a362e;
@@ -410,23 +410,23 @@
         }
 
         .footer-title {
-        color: #d4af37;
-        font-size: 16px;
+        color: #142639;
+        font-size: 20px;
         margin: 0 0 15px 0;
         letter-spacing: 1px;
         }
 
         .footer-about p {
-        font-size: 14px;
+        font-size: 15px;
         line-height: 1.8;
-        color: #a8a296;
+        color: #a3abb4;
         margin: 0;
         }
 
         .footer-info p {
-        font-size: 14px;
+        font-size: 15px;
         line-height: 1.8;
-        color: #a8a296;
+        color: #a3abb4;
         margin: 0;
         }
 
@@ -434,12 +434,12 @@
         list-style: none;
         padding: 0;
         margin: 0;
-        font-size: 14px;
+        font-size: 15px;
         line-height: 1.9;
-        color: #a8a296;
+        color: #a3abb4;
         }
         .footer-details a {
-        color: #a8a296;          /* 跟其他文字一樣的暖灰米色，想改金色可用 #d4af37 */
+        color: #a3abb4;          /* 跟其他文字一樣的暖灰米色，想改金色可用 #d4af37 */
         text-decoration: none;   /* 拿掉預設底線；想保留底線就刪掉這行 */
         }
 
@@ -462,8 +462,8 @@
         width: 42px;
         height: 42px;
         border-radius: 50%;
-        background-color: #4a453b;
-        color: #ffffff;
+        background-color: #142639;
+        color: #dbdbdb;
         text-decoration: none;
         font-size: 12px;
         font-weight: bold;
@@ -482,10 +482,10 @@
         max-width: 1100px;
         margin: 40px auto 0 auto;
         padding-top: 20px;
-        border-top: 1px solid #2e2b24;
+        border-top: 1px solid #142639;
         text-align: right;
-        font-size: 12px;
-        color: #827c70;
+        font-size: 14px;
+        color: #142639;
         }
 
         
@@ -563,6 +563,6 @@
             }
             .footer-bottom {
                 text-align: center;
-            
+                font-size: 14px;
             }
        }
